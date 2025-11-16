@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Happy Birthday Miss Novia</title>
+
+		<!-- Tailwind CDN -->
+		<script src="https://cdn.tailwindcss.com"></script>
+
+		<!-- Fonts -->
+		<link
+			href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Dancing+Script:wght@600&display=swap"
+			rel="stylesheet" />
+
+		<style>
+			:root {
+				--blush: #ffe3ea;
+				--gold: #e7c787;
+				--cream: #fffdf8;
+				--rose: #ffced6;
+				--pink: #f9d4e3;
+			}
+
+			html,
+			body {
+				height: 100%;
+				overflow: hidden !important; /* Prevent ALL scrolling */
+			}
+
+			body {
+				background: linear-gradient(180deg, var(--cream), var(--pink));
+				overflow-x: hidden;
+				font-family: "Cormorant Garamond", serif;
+			}
+
+			/* Floating petals */
+			.petal {
+				position: absolute;
+				width: 18px;
+				height: 18px;
+				background: radial-gradient(circle, #ffdbe6, #ffb4c7);
+				opacity: 0.8;
+				border-radius: 45% 55% 70% 30% / 40% 50% 60% 50%;
+				animation: fall linear infinite;
+				pointer-events: none;
+			}
+			@keyframes fall {
+				0% {
+					transform: translateY(-20vh) rotate(0deg);
+				}
+				100% {
+					transform: translateY(120vh) rotate(360deg);
+				}
+			}
+
+			/* Glass card */
+			.glass {
+				background: rgba(255, 255, 255, 0.55);
+				backdrop-filter: blur(14px);
+				border-radius: 20px;
+				border: 1px solid rgba(255, 255, 255, 0.3);
+				box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+			}
+
+			/* Gold Divider */
+			.divider {
+				height: 1px;
+				width: 100%;
+				background: linear-gradient(
+					90deg,
+					transparent,
+					var(--gold),
+					transparent
+				);
+				margin: 20px 0;
+			}
+
+			/* Button */
+			.gold-btn {
+				background: linear-gradient(90deg, #f9d4a6, #ffe7c2);
+				padding: 10px 18px;
+				border-radius: 999px;
+				font-weight: 600;
+				color: #5c3b2e;
+				box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+				transition: 0.3s ease;
+			}
+			.gold-btn:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+			}
+
+			/* Handwritten heading */
+			.script {
+				font-family: "Dancing Script", cursive;
+				font-size: 48px;
+				color: #c26464;
+			}
+
+			/* Envelope styling */
+			.envelope-container {
+				width: 260px;
+				height: 180px;
+				position: relative;
+			}
+			.envelope-body {
+				width: 100%;
+				height: 100%;
+				background: #fff3f6;
+				border: 2px solid #e8c2c8;
+				border-radius: 12px;
+				box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+			}
+			.envelope-flap {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 50%;
+				background: #ffdae4;
+				border-radius: 12px 12px 0 0;
+				clip-path: polygon(0 0, 100% 0, 50% 100%);
+				transition: transform 0.6s ease;
+				transform-origin: top center;
+			}
+			.envelope.open .envelope-flap {
+				transform: rotateX(-180deg);
+			}
+		</style>
+	</head>
+	<body
+		class="min-h-screen p-6 flex flex-col items-center justify-center relative">
+		<!-- Petals container -->
+		<div id="petals" aria-hidden="true"></div>
+
+		<main class="w-full max-w-3xl text-center">
+			<!-- Hero Title -->
+			<h1 class="script mb-4">Happy Birthday Miss Novia! 🎀</h1>
+
+			<p class="text-xl text-gray-700 max-w-xl mx-auto">
+				A sincere birthday wish for Miss Novia!
+			</p>
+
+			<!-- Envelope Front -->
+			<div
+				id="envelope"
+				class="mx-auto mt-10 cursor-pointer transition hover:scale-105 envelope-container"
+				role="button"
+				tabindex="0"
+				aria-label="Open the card">
+				<div class="envelope-body"></div>
+				<div class="envelope-flap"></div>
+				<p class="text-center mt-4 text-gray-700 font-semibold">Tap to Open</p>
+			</div>
+
+			<!-- Hidden Card (revealed after envelope) -->
+			<div id="cardContent" class="hidden">
+				<div class="glass p-8 mt-10">
+					<h2 class="text-3xl font-semibold text-gray-800">
+						A Message for Miss Novia
+					</h2>
+					<div class="divider"></div>
+					<p class="text-lg text-gray-700 leading-relaxed">
+						Happy Birthday Miss Nov! 🎊 <br />
+						You’ve always felt like a sister to me in all the ways that matter.
+						You are kind, thoughtful, and quietly supportive. Seeing you embrace
+						this new role as a mom with such warmth and grace has been truly
+						beautiful. I hope this new chapter brings you joy, courage, and the
+						softest moments of happiness. Wish you all the best miss!
+					</p>
+
+					<!-- <div
+						class="mt-10 grid grid-cols-2 sm:grid-cols-3 gap-4 justify-center">
+						<div class="rounded-lg overflow-hidden shadow-lg bg-white">
+							<img
+								src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e"
+								class="h-28 w-full object-cover"
+								alt="Memory 1" />
+							<p class="p-2 text-sm text-gray-600">Memory 1</p>
+						</div>
+
+						<div class="rounded-lg overflow-hidden shadow-lg bg-white">
+							<img
+								src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"
+								class="h-28 w-full object-cover"
+								alt="Memory 2" />
+							<p class="p-2 text-sm text-gray-600">Memory 2</p>
+						</div>
+
+						<div class="rounded-lg overflow-hidden shadow-lg bg-white">
+							<img
+								src="https://images.unsplash.com/photo-1517841905240-472988babdf9"
+								class="h-28 w-full object-cover"
+								alt="Memory 3" />
+							<p class="p-2 text-sm text-gray-600">Memory 3</p>
+						</div>
+					</div> -->
+
+					<p class="mt-10 italic text-gray-600">
+						Once again, <br />
+						Happy Birthday Miss Novia! 💛
+					</p>
+				</div>
+			</div>
+		</main>
+
+		<script>
+			// Floating petals
+			const container = document.getElementById("petals");
+			for (let i = 0; i < 25; i++) {
+				const p = document.createElement("div");
+				p.classList.add("petal");
+				p.style.left = Math.random() * 100 + "vw";
+				p.style.animationDuration = 6 + Math.random() * 6 + "s";
+				p.style.opacity = 0.5 + Math.random() * 0.5;
+				container.appendChild(p);
+			}
+
+			// Envelope open → reveal card content
+			const envelope = document.getElementById("envelope");
+			const card = document.getElementById("cardContent");
+
+			function revealCard() {
+				// add open class for flap animation
+				envelope.classList.add("open");
+				// small delay to show flap animation
+				setTimeout(() => {
+					// fade out envelope container and show card
+					envelope.style.transition = "opacity .45s ease, transform .45s ease";
+					envelope.style.opacity = "0";
+					envelope.style.transform = "scale(.95) translateY(-10px)";
+					setTimeout(() => {
+						envelope.style.display = "none";
+						card.classList.remove("hidden");
+						card.scrollIntoView({ behavior: "smooth", block: "center" });
+					}, 300);
+				}, 500);
+			}
+
+			envelope.addEventListener("click", revealCard);
+			envelope.addEventListener("keydown", (e) => {
+				if (e.key === "Enter" || e.key === " ") revealCard();
+			});
+
+			// Accessibility: ensure script doesn't crash when elements are missing
+			// (defensive checks not strictly needed here since elements exist above)
+		</script>
+	</body>
+</html>
