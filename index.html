@@ -24,8 +24,8 @@
 
 			html,
 			body {
-				height: 100%;
-				overflow: hidden !important; /* Prevent ALL scrolling */
+				min-height: 100%;
+				overflow-x: hidden;
 			}
 
 			body {
@@ -100,8 +100,10 @@
 
 			/* Envelope styling */
 			.envelope-container {
-				width: 260px;
+				width: 70vw;
+				max-width: 260px;
 				height: 180px;
+				aspect-ratio: 4 / 3;
 				position: relative;
 			}
 			.envelope-body {
@@ -126,6 +128,18 @@
 			}
 			.envelope.open .envelope-flap {
 				transform: rotateX(-180deg);
+			}
+
+			@media (max-width: 480px) {
+				main {
+					padding-top: 2rem;
+				}
+				.glass {
+					padding: 1.5rem;
+				}
+				.script {
+					font-size: 36px;
+				}
 			}
 		</style>
 	</head>
